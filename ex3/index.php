@@ -10,3 +10,5 @@ try {
 } catch (Exception $e) {
     trigger_error($e->getMessage(), E_USER_ERROR);
 }
+
+echo "Conexão realizada com sucesso!";
