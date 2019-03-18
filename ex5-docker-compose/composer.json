@@ -1,0 +1,14 @@
+{
+    "name": "amcosta/dojo-docker-ex5",
+    "description": "Dojo de docker",
+    "type": "mit",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Alex Moreno",
+            "email": "alex.moreno.costa@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

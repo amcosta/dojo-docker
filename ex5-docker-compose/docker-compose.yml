@@ -1,0 +1,10 @@
+version: "3"
+services:
+  php:
+    build:
+      context: .
+    container_name: php-cep
+    volumes:
+      - ".:/app"
+    ports:
+      - 8383:80
