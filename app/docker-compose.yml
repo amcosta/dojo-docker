@@ -13,6 +13,7 @@ services:
       - default
     depends_on:
       - mysql
+      - redis
     entrypoint: ["php", "bin/console", "server:run", "0.0.0.0:80"]
 
   mysql:
@@ -27,6 +28,11 @@ services:
       - "./infra/mysql:/var/lib/mysql"
     networks:
       - default
+    command: mysqld --sql_mode="" --general_log=1 --general_log_file=/var/log/mysql/mysql.log
+
+  redis:
+    image: redis
+    container_name: cache
 
 networks:
   default:

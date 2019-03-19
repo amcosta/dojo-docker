@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\ZipCode\Provider\CacheProvider;
 use App\Service\ZipCode\Provider\DatabaseProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,7 +15,7 @@ class CepController extends Controller
      * @param string $zipCode
      * @return JsonResponse
      */
-    public function searchZipCode(string $zipCode, DatabaseProvider $zipCodeProvider)
+    public function searchZipCode(string $zipCode, CacheProvider $zipCodeProvider)
     {
         $model = $zipCodeProvider->search($zipCode);
         return new JsonResponse($model);

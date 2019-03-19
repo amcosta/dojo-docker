@@ -53,7 +53,7 @@ class ZipCode implements \JsonSerializable
 
     public function setCep(string $cep): self
     {
-        $this->cep = $cep;
+        $this->cep = preg_replace('/\D/', '', $cep);
 
         return $this;
     }
