@@ -1,2 +1,2 @@
 FROM ubuntu:latest
-ENTRYPOINT ["echo", "Primeiro dockerfile"]
+ENTRYPOINT "echo Primeiro dockerfile"

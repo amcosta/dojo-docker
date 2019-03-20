@@ -9,9 +9,11 @@ services:
     ports:
       - 8383:80
     networks:
-      - dojo-docker-ex5
+      - default
     depends_on:
       - mysql
+      - redis
+    entrypoint: ["php", "bin/console", "server:run", "0.0.0.0:80"]
 
   mysql:
     image: mysql:5.7
@@ -19,13 +21,18 @@ services:
     ports:
       - 3309:3306
     environment:
-      - "MYSQL_ALLOW_EMPTY_PASSWORD=yes"
+      - "MYSQL_ROOT_PASSWORD=viacep"
       - "MYSQL_DATABASE=viacep"
     volumes:
       - "./infra/mysql:/var/lib/mysql"
     networks:
-      - dojo-docker-ex5
+      - default
+    command: mysqld --sql_mode="" --general_log=1 --general_log_file=/var/log/mysql/mysql.log
+
+  redis:
+    image: redis
+    container_name: cache
 
 networks:
-  dojo-docker-ex5:
+  default:
     driver: bridge
