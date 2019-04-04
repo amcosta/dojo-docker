@@ -4,7 +4,7 @@ RUN apt-get install -y git wget
 RUN mkdir /app
 ENV APP_ENV=PROD
 WORKDIR /app
-RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 COPY . /app
-RUN php composer.phar install
+#RUN php composer.phar install
 EXPOSE 80 8000
